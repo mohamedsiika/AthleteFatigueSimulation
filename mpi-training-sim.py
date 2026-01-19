@@ -274,8 +274,8 @@ def main():
         print(f"MPI processes: {size}")
         print(f"Training days: {config['training_days']}")
         print(f"Race day: {config['race_day']}")
-        print(f"τ₁ ~ N({config['tau1_mean']:.1f}, {config['tau1_std']:.1f}²)")
-        print(f"τ₂ ~ N({config['tau2_mean']:.1f}, {config['tau2_std']:.1f}²)")
+        print(f"tau1 ~ N({config['tau1_mean']:.1f}, {config['tau1_std']:.1f})")
+        print(f"tau2 ~ N({config['tau2_mean']:.1f}, {config['tau2_std']:.1f})")
         print(f"Success threshold: p > {config['threshold']:.2f}")
         print("=" * 80)
         print(f"Starting simulation on {size} MPI ranks...")
@@ -368,7 +368,7 @@ def main():
             }
         }
         
-        with open(config['output'], 'w') as f:
+        with open(config['output'], 'w', encoding='utf-8') as f:
             json.dump(output_data, f, indent=2)
         
         print(f"\nResults saved to: {config['output']}")

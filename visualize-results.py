@@ -9,10 +9,10 @@ import matplotlib.pyplot as plt
 import argparse
 from pathlib import Path
 
-
+ 
 def load_results(filename):
     """Load simulation results from JSON file."""
-    with open(filename, 'r') as f:
+    with open(filename, 'r', encoding='utf-8') as f:
         data = json.load(f)
     return data
 
@@ -210,7 +210,7 @@ The 90% confidence interval for performance is:
     """
     
     report_file = output_dir / 'summary_report.txt'
-    with open(report_file, 'w') as f:
+    with open(report_file, 'w', encoding='utf-8') as f:
         f.write(report)
     
     print(f"✓ Saved: {report_file}")

@@ -1,4 +1,5 @@
 @echo off
+@chcp 65001 >nul
 REM ################################################################################
 REM # QUICK START SCRIPT - Athletic Training Robustness Analysis (Windows)
 REM ################################################################################
@@ -28,14 +29,12 @@ if !errorlevel! equ 0 (
 )
 
 REM Check for MPI
-mpiexec --version >nul 2>&1
+mpiexec -n 1 hostname >nul 2>&1
 if !errorlevel! equ 0 (
-    for /f "tokens=1-3" %%a in ('mpiexec --version') do (
-        echo [OK] MPI found: %%a %%b %%c
-        goto mpi_found
-    )
+    echo [OK] MPI found and appears to be working.
+    goto mpi_found
 ) else (
-    echo [ERROR] MPI not found. Please install Microsoft MPI or MPICH.
+    echo [ERROR] MPI not found or not working. Please install Microsoft MPI.
     echo   Download: https://www.microsoft.com/en-us/download/details.aspx?id=57467
     exit /b 1
 )
@@ -65,7 +64,7 @@ REM Step 4: Run a quick test with 4 processes
 echo Step 4: Running quick test (N=1,000 simulations, 4 MPI ranks)...
 echo ----------------------------------------
 
-mpiexec -n 4 python mpi_training_sim.py ^
+mpiexec -n 4 python "%~dp0mpi-training-sim.py" ^
     --n-sims 1000 ^
     --training-days 60 ^
     --race-day 59 ^
@@ -90,7 +89,7 @@ REM Step 5: Generate visualizations
 echo Step 5: Generating visualization plots...
 echo ----------------------------------------
 
-python visualize_results.py results/quicktest.json --output-dir plots/quicktest
+python "%~dp0visualize-results.py" results/quicktest.json --output-dir plots/quicktest
 
 if !errorlevel! neq 0 (
     echo [WARNING] Visualization generation may have failed
@@ -121,16 +120,7 @@ echo   - results\quicktest.json              (simulation data)
 echo   - plots\quicktest\*.png               (visualization plots)
 echo   - plots\quicktest\summary_report.txt  (text summary)
 echo.
-echo Next steps:
-echo   1. Run larger simulation:
-echo      mpiexec -n 8 python mpi_training_sim.py --n-sims 100000
-echo.
-echo   2. Compare training schedules:
-echo      compare_schedules.bat
-echo.
-echo   3. Read the full documentation:
-echo      type SETUP_GUIDE.md
-echo.
+
 echo ========================================================================
 
 endlocal
