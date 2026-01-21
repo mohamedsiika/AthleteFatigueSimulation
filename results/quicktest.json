@@ -9,14 +9,14 @@
     "tau2_std": 2.0,
     "k1": 1.0,
     "k2": 2.0,
-    "threshold": 0.8,
+    "threshold": 10.0,
     "schedule": "periodized",
     "output": "results/quicktest.json"
   },
   "results": {
     "total_simulations": 1000,
-    "success_count": 901,
-    "probability_success": 0.901,
+    "success_count": 895,
+    "probability_success": 0.895,
     "performance_stats": {
       "mean": 414.5475969227159,
       "std": 329.72722420497365,
@@ -1091,7 +1091,7 @@
   },
   "computational_info": {
     "mpi_ranks": 4,
-    "elapsed_time_seconds": 0.1320047378540039,
-    "throughput_sims_per_sec": 7575.485670112776
+    "elapsed_time_seconds": 0.3735203742980957,
+    "throughput_sims_per_sec": 2677.2301293581622
   }
 }

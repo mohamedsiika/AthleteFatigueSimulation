@@ -72,7 +72,7 @@ mpiexec -n 4 python "%~dp0mpi-training-sim.py" ^
     --tau1-std 3.0 ^
     --tau2-mean 12.0 ^
     --tau2-std 2.0 ^
-    --threshold 0.8 ^
+    --threshold 10 ^
     --schedule periodized ^
     --output results/quicktest.json
 

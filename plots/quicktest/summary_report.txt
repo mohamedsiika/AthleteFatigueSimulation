@@ -16,7 +16,7 @@ Fitness Decay (τ₁):       μ = 45.0 days, σ = 3.0 days
 Fatigue Decay (τ₂):       μ = 12.0 days, σ = 2.0 days
 Fitness Coefficient (k₁): 1.00
 Fatigue Coefficient (k₂): 2.00
-Success Threshold:        0.80
+Success Threshold:        10.00
 
 PERFORMANCE STATISTICS (RACE DAY)
 --------------------------------------------------------------------------------
@@ -28,20 +28,20 @@ Median:                     402.6082
 
 ROBUSTNESS ANALYSIS
 --------------------------------------------------------------------------------
-Success Count:                   901 / 1,000
-Probability of Success:       90.10%
-Expected Failure Rate:         9.90%
+Success Count:                   895 / 1,000
+Probability of Success:       89.50%
+Expected Failure Rate:        10.50%
 
 COMPUTATIONAL PERFORMANCE
 --------------------------------------------------------------------------------
 MPI Ranks:                4
-Elapsed Time:             0.13 seconds
-Throughput:               7,575 sims/second
+Elapsed Time:             0.37 seconds
+Throughput:               2,677 sims/second
 
 INTERPRETATION
 --------------------------------------------------------------------------------
-This training schedule has a 90.1% probability of producing
-performance above the threshold of 0.80 on race day.
+This training schedule has a 89.5% probability of producing
+performance above the threshold of 10.00 on race day.
 
 The 90% confidence interval for performance is:
 [-111.687, 984.957]
